@@ -21,27 +21,29 @@ sortContacts = ->
     $el = $(el)
     path = $el.find('.user-name-link').attr('href')
     name = path.match(/profile\/(\w+)/)[1]
-    url = "https://www.xing.com/app/contact?op=showroutesname=#{name}"
+    url = "https://www.xing.com/app/contact?op=showroutes;name=#{name}"
 
     $.get url, (data) ->
       $doc = $($.parseHTML(data))
       $connectionList = $doc.find('.contact-path-list')
       connections = $connectionList.length
-      if connections > 0
-        hops = $connectionList.filter(':first').find('li').length - 2
+      hops = if connections > 0
+        $connectionList.filter(':first').find('li').length - 2
+      else
+        99
 
-      html = "<div style='position:absolutetop:0right:0'><a href='#{url}'>"
-      if hops
-        html += "#{hops} hop#{'s' unless hops == 1}<br>"
-      html += "#{connections} connection#{'s' unless connections == 1}</a></div>"
+      html = "<div style='position:absolute;top:0;right:0;'><a href='#{url}'>"
+      if hops != 99
+        html += "#{hops} hop#{if hops == 1 then '' else 's'}<br>"
+      html += "#{connections} connection#{if connections == 1 then '' else 's'}</a></div>"
       $el.find('.component-user-card').append(html)
 
       $el.data('connections', connections)
+      $el.data('hops', hops)
 
-      if hops
-        $el.data('hops', hops)
+      if hops != 99
         $contactsWithMoreHops = $firstPage.find('.contact').filter (i, el) ->
-          ($(el).data('hops') || 0) > hops
+          $(el).data('hops') > hops
         if $contactsWithMoreHops.length
           $contactsWithMoreHops.first().before($el)
 
