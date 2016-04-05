@@ -1,6 +1,6 @@
 coffeescript_options = {
   input:    '.',
-  patterns: [/^(.+\.coffee)/]
+  patterns: [/\A(.+\.coffee)\z/]
 }
 
 guard 'coffeescript', coffeescript_options do
