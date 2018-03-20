@@ -5,16 +5,20 @@ data = [[
   'Duration',
   'Text'
 ]]
-elements = document.querySelectorAll('.L1Ysrb')
-Array.prototype.forEach.call elements, (el) ->
-  times = el.querySelector('.vXnnM').textContent.split(' – ')
-  data.push [
-    el.querySelector('.mAvCFe').textContent,
-    times[0],
-    times[1],
-    Math.abs(new Date("2000-01-01T#{times[0]}") - new Date("2000-01-01T#{times[1]}")) / 36e5;
-    el.querySelector('html-blob').textContent
-  ]
+wrapperElements = document.querySelectorAll('.L1Ysrb')
+Array.prototype.forEach.call wrapperElements, (wrapperElement) ->
+  timeElements = wrapperElement.querySelectorAll('.vXnnM')
+  date = wrapperElement.querySelector('.mAvCFe').textContent
+  text = wrapperElement.querySelector('html-blob').textContent
+  Array.prototype.forEach.call timeElements, (timeElement) ->
+    times = timeElement.textContent.split(' – ')
+    data.push [
+      date,
+      times[0],
+      times[1],
+      Math.abs(new Date("2000-01-01T#{times[0]}") - new Date("2000-01-01T#{times[1]}")) / 36e5;
+      text
+    ]
 csv = data.map((value) -> value.join(',')).join("\n")
 
 textArea = document.createElement('textarea')
