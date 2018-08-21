@@ -9,7 +9,7 @@
     var date, text, timeElements;
     timeElements = wrapperElement.querySelectorAll('.vXnnM');
     date = wrapperElement.querySelector('.mAvCFe').textContent;
-    text = wrapperElement.querySelector('html-blob').textContent;
+    text = wrapperElement.querySelector('.LLxvl.IeojK.EmMre').textContent;
     return Array.prototype.forEach.call(timeElements, function(timeElement) {
       var times;
       times = timeElement.textContent.split(' – ');

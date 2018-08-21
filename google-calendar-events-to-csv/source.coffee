@@ -9,7 +9,7 @@ wrapperElements = document.querySelectorAll('.L1Ysrb')
 Array.prototype.forEach.call wrapperElements, (wrapperElement) ->
   timeElements = wrapperElement.querySelectorAll('.vXnnM')
   date = wrapperElement.querySelector('.mAvCFe').textContent
-  text = wrapperElement.querySelector('html-blob').textContent
+  text = wrapperElement.querySelector('.LLxvl.IeojK.EmMre').textContent
   Array.prototype.forEach.call timeElements, (timeElement) ->
     times = timeElement.textContent.split(' – ')
     data.push [
