@@ -1,6 +1,6 @@
 ## Installing
 
-Go to https://krautcomputing.github.io/bookmarklets/ for a list of links to the bookmarklets that you can drag to your bookmarks bar.
+Go to https://manuelmeurer.github.io/bookmarklets/ for a list of links to the bookmarklets that you can drag to your bookmarks bar.
 
 ## Support
 
